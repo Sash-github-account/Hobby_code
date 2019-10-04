@@ -199,21 +199,21 @@ file2 = open('input_set.txt','r')
 #num = input('enter number of particles: ')
 file2_lines = file2.readlines()
 num = int(file2_lines[0])
-print num
+#print num
 #read_choice =int(input('1.enter manually 2.read from input file:'))
 read_choice = int(file2_lines[1])
 endtime = float(file2_lines[3])
 timeres = float(file2_lines[4])
 throttle_ip = int(file2_lines[5])
-print read_choice
+print(read_choice)
 if read_choice ==2:
     #file_name = str(input('enter input data file name: '))
     file_name = str(file2_lines[2].rstrip())
-    print file_name
+    print(file_name)
     file1= open(file_name,'r')
     read_lines = file1.readlines()
     data = [[read_lines[i+(j*5)] for i in range(5)] for j in range(num)]
-    print data
+    print(data)
     file2.close()
     file1.close()
 
@@ -242,7 +242,7 @@ for i in range(num):
 
 
 timesteps = int(endtime/timeres)
-print timesteps
+print(timesteps)
 xplot =[]
 yplot =[]
 zplot =[]
@@ -263,13 +263,13 @@ for partcle in range (num):
     for cod in range(3):
         systm[partcle].prev_pos[cod] = systm[partcle].pos[cod]
         systm[partcle].pos[cod] = systm[partcle].pos[cod]+(systm[partcle].vel[cod]*timeres)
-    print str(systm[partcle].prev_pos)+str(systm[partcle].pos)
+    print(str(systm[partcle].prev_pos)+str(systm[partcle].pos))
 
 thrle_cnt =0
 file1 = open('partdata.txt','w')
 for  i in range(timesteps):
     timeplot.append(i*timeres)
-    print 'time: '+ str(i*timeres)
+    print('time: '+ str(i*timeres))
     file1.write('time: '+ str(i*timeres)+'\n')
     PE = 0
     TKE = 0
@@ -301,7 +301,7 @@ for  i in range(timesteps):
             systm[par].vel[coord] = (systm[par].pos[coord] - systm[par].prev_pos[coord])/(2*timeres)
             systm[par].prev_pos[coord] = temp_prevpos[par][coord]
 
-        print str(systm[par].vel)
+        print(str(systm[par].vel))
 
     #for parvel in range(num):
     #    for velcord in range(3):
@@ -345,7 +345,7 @@ for  i in range(timesteps):
                     #systm[ot_part] = coll_arr[1]
 
 
-        print 'prev_pos '+ str(systm[part].prev_pos)+ ' pos of '+ str(part) +' = ',systm[part].pos, 'vel'+str(part)+'= ',systm[part].vel  ,' acc'+str(part)+'= ',systm[part].acc
+        print('prev_pos '+ str(systm[part].prev_pos)+ ' pos of '+ str(part) +' = ',systm[part].pos, 'vel'+str(part)+'= ',systm[part].vel  ,' acc'+str(part)+'= ',systm[part].acc)
         file1.write('pos of '+ str(part) +' = '+str(systm[part].pos)+ 'vel'+str(part)+'= '+str(systm[part].vel)  +' acc'+str(part)+'= '+str(systm[part].acc)+'\t'+str(systm[part].KE)+'\n')
 
 
@@ -364,7 +364,7 @@ file1.close()
 x=[2.3,2.7,2.9,3.2,3.5,3.7]
 f_x =[6.38,13.6,18.7,28.26,40.4, 50]
 P = lagrange_interpole(x,f_x,3.0)
-print P
+print(P)
 
 fig = plt.figure()
 ax = p3.Axes3D(fig)
@@ -432,7 +432,7 @@ def init():
 def animate(i):
 
     for line, pt, xi, yi, zi in zip(lines, pts, xplot, yplot, zplot):
-        print 'entered'
+        #print 'entered'
         x, y, z = xi[:i], yi[:i], zi[:i]
         line.set_data(x, y)
         line.set_3d_properties(z)
