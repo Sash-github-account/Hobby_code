@@ -446,6 +446,6 @@ def animate(i):
 
 
 # animation function.  This will be called sequentially with the frame number
-anim = animation.FuncAnimation(fig3, animate, init_func=init, frames=(len(range(timesteps))/throttle_ip), interval=1, blit=False)
+anim = animation.FuncAnimation(fig3, animate, init_func=init, frames= int(len(range(timesteps))/throttle_ip), interval=1, blit=False)
 
 plt.show()
